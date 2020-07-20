@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+	https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="accountDao" class="thinking.in.spring.ioc.dao.AccountDaoImpl"></bean>
+	<bean id="accountService" class="thinking.in.spring.ioc.service.AccountServiceImpl">
+		<!--   set + name就是set方法名；ref就是bean的id		-->
+		<property name="AccountDao" ref="accountDao"></property>
+	</bean>
+
+	<bean id="companyBean" class="thinking.in.spring.ioc.factory.CompanyFactoryBean">
+		<property name="companyInfo" value="寅诚,普陀,20"></property>
+	</bean>
+</beans>
