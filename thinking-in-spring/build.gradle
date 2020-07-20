@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.springframework'
+version '5.2.7.BUILD-SNAPSHOT'
+
+repositories {
+    google()
+    jcenter()
+    // 添加阿里云 maven 地址
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    maven { url 'https://dl.bintray.com/umsdk/release' }
+
+    maven { url "https://jitpack.io" }
+    maven { url "https://dl.bintray.com/sunjiangrong/maven" }
+
+}
+
+dependencies {
+    compile(project(":spring-core"))
+    compile(project(":spring-beans"))
+    compile(project(":spring-context"))
+    testCompile(testFixtures(project(":spring-beans")))
+    compile group: 'dom4j', name: 'dom4j', version: '1.6.1'
+    compile group: 'jaxen', name: 'jaxen', version: '1.1.6'
+    compile group: 'cglib', name: 'cglib', version: '2.2'
+
+}
+
+
+task junit(type: Test) {
+    description = "Runs JUnit 4 and JUnit Jupiter tests."
+    useJUnitPlatform {
+        excludeTags "failing-test-case"
+    }
+    include(["**/*Tests.class", "**/*Test.class"])
+    exclude(["**/testng/**/*.*"])
+    systemProperty("testGroups", project.properties.get("testGroups"))
+    // Java Util Logging for the JUnit Platform.
+    // systemProperty("java.util.logging.manager", "org.apache.logging.log4j.jul.LogManager")
+}
+
+task testNG(type: Test) {
+    description = "Runs TestNG tests."
+    useTestNG()
+    include(["**/testng/**/*Tests.class", "**/testng/**/*Test.class"])
+    systemProperty("testGroups", project.properties.get("testGroups"))
+    // Show STD_OUT & STD_ERR of the test JVM(s) on the console:
+    // testLogging.showStandardStreams = true
+    // forkEvery 1
+}
+
+test {
+    description = "Runs all tests."
+    dependsOn junit, testNG
+    exclude(["**/*.*"])
+}

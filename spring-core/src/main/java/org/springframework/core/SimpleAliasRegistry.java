@@ -31,6 +31,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 
 /**
+ * 主要是使用Map作为alias的缓存，是对AliasRegistry的实现
+ *
  * Simple implementation of the {@link AliasRegistry} interface.
  * <p>Serves as base class for
  * {@link org.springframework.beans.factory.support.BeanDefinitionRegistry}

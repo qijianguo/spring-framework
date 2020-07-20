@@ -53,7 +53,9 @@ import org.springframework.core.io.Resource;
 @Deprecated
 @SuppressWarnings({"serial", "all"})
 public class XmlBeanFactory extends DefaultListableBeanFactory {
+	// 读取XML中的BeanDefinition
 
+	/** Angus 自定义的XML读取器， 用于对资源文件进行读取和注册 */
 	private final XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(this);
 
 

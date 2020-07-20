@@ -20,6 +20,8 @@ import org.springframework.lang.Nullable;
 import org.springframework.util.ResourceUtils;
 
 /**
+ * Angus  ResourceLoader 资源加载器，通过给定的资源路径返回对应的Resource
+ *
  * Strategy interface for loading resources (e.. class path or file system
  * resources). An {@link org.springframework.context.ApplicationContext}
  * is required to provide this functionality, plus extended
@@ -46,6 +48,8 @@ public interface ResourceLoader {
 
 
 	/**
+	 * Angus 通过给定的资源路径返回对应的Resource
+	 *
 	 * Return a Resource handle for the specified resource location.
 	 * <p>The handle should always be a reusable resource descriptor,
 	 * allowing for multiple {@link Resource#getInputStream()} calls.

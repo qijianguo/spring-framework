@@ -173,6 +173,8 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 	 */
 	public AbstractAutowireCapableBeanFactory() {
 		super();
+		// TODO Angus 忽略给定接口的自动装配功能（例如A中有属性B，Spring初始化A时发现属性B未初始化，会先初始化B再初始化A
+		//  但是B如果实现了BeanNameAware、BeanFactoryAware等接口后就不会被初始化了。）
 		ignoreDependencyInterface(BeanNameAware.class);
 		ignoreDependencyInterface(BeanFactoryAware.class);
 		ignoreDependencyInterface(BeanClassLoaderAware.class);

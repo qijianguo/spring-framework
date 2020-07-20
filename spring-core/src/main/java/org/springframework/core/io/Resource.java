@@ -42,16 +42,17 @@ import org.springframework.lang.Nullable;
  * @see #getFile()
  * @see WritableResource
  * @see ContextResource
- * @see UrlResource
+ * @see UrlResource Url资源
  * @see FileUrlResource
- * @see FileSystemResource
- * @see ClassPathResource
- * @see ByteArrayResource
- * @see InputStreamResource
+ * @see FileSystemResource 文件
+ * @see ClassPathResource ClassPath资源
+ * @see ByteArrayResource Byte数组资源
+ * @see InputStreamResource InputStream资源
  */
 public interface Resource extends InputStreamSource {
 
 	/**
+	 * 是否存在
 	 * Determine whether this resource actually exists in physical form.
 	 * <p>This method performs a definitive existence check, whereas the
 	 * existence of a {@code Resource} handle only guarantees a valid
@@ -60,6 +61,7 @@ public interface Resource extends InputStreamSource {
 	boolean exists();
 
 	/**
+	 * 是否可读
 	 * Indicate whether non-empty contents of this resource can be read via
 	 * {@link #getInputStream()}.
 	 * <p>Will be {@code true} for typical resource descriptors that exist
@@ -75,6 +77,7 @@ public interface Resource extends InputStreamSource {
 	}
 
 	/**
+	 * 是否处于打开状态
 	 * Indicate whether this resource represents a handle with an open stream.
 	 * If {@code true}, the InputStream cannot be read multiple times,
 	 * and must be read and closed to avoid resource leaks.
